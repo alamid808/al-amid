@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Al-Amid | العميد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{height:100%}
+body{
+  background:#09090b;
+  min-height:100%;
+  font-family:'DM Sans',sans-serif;
+  display:flex;flex-direction:column;align-items:center;
+  overflow-x:hidden;
+}
+.bg{
+  position:fixed;inset:0;z-index:0;overflow:hidden;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -5%, rgba(180,140,50,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 85%, rgba(40,90,70,0.14) 0%, transparent 55%),
+    #09090b;
+}
+.bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:26px 26px;
+}
+.wrap{
+  position:relative;z-index:1;
+  width:100%;max-width:400px;
+  padding:52px 20px 72px;
+  display:flex;flex-direction:column;align-items:center;
+}
+
+/* Logo */
+.logo-ring{
+  width:96px;height:96px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;position:relative;
+  animation:popIn .7s cubic-bezier(.175,.885,.32,1.275) both;
+}
+.logo-ring::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(200,160,60,.7),rgba(200,160,60,.1) 40%,rgba(200,160,60,.7));
+  padding:2px;
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),white calc(100% - 2px));
+          mask:radial-gradient(farthest-side,transparent calc(100% - 2px),white calc(100% - 2px));
+  animation:spin 7s linear infinite;
+}
+.logo-ring::after{
+  content:'';position:absolute;inset:3px;border-radius:50%;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.logo-ring img{
+  width:58px;height:58px;object-fit:contain;
+  border-radius:50%;z-index:1;position:relative;
+  filter:invert(1) brightness(1.1);
+}
+
+/* Name */
+.name{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;font-weight:700;
+  color:#f0ebe2;letter-spacing:.01em;text-align:center;
+  animation:slideUp .6s cubic-bezier(.16,1,.3,1) .1s both;
+}
+.arabic{
+  display:block;
+  font-family:'DM Sans',sans-serif;
+  font-size:.78rem;font-weight:300;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:#c8a03c;margin-top:6px;
+}
+.bio{
+  font-size:.82rem;color:rgba(240,235,226,0.45);
+  text-align:center;line-height:1.85;
+  margin:18px 0 6px;max-width:280px;font-weight:300;
+  animation:fadeIn .8s ease .28s both;
+}
+.line{
+  width:32px;height:1px;
+  background:linear-gradient(90deg,transparent,#c8a03c,transparent);
+  margin:16px 0 30px;
+  animation:fadeIn .8s ease .32s both;
+}
+
+/* Buttons */
+.platforms{width:100%;display:flex;flex-direction:column;gap:13px;}
+.platform-btn{
+  display:flex;align-items:center;width:100%;
+  border-radius:18px;border:none;cursor:pointer;
+  text-decoration:none;position:relative;overflow:hidden;
+  transform:translateZ(0);
+  transition:transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease;
+  animation:slideUp .6s cubic-bezier(.16,1,.3,1) both;
+}
+.platform-btn:nth-child(1){animation-delay:.38s}
+.platform-btn:nth-child(2){animation-delay:.46s}
+.platform-btn:nth-child(3){animation-delay:.54s}
+.platform-btn:nth-child(4){animation-delay:.62s}
+.platform-btn:active{transform:scale(0.96) translateZ(0) !important;}
+.platform-btn:hover{transform:translateY(-3px) scale(1.01) translateZ(0);}
+
+/* Shimmer sweep */
+.platform-btn::after{
+  content:'';position:absolute;top:0;left:-80%;
+  width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.09),transparent);
+  transform:skewX(-18deg);
+  transition:left .55s ease;pointer-events:none;
+}
+.platform-btn:hover::after{left:160%;}
+
+/* YT */
+.btn-yt{
+  background:linear-gradient(135deg,#ff1a1a 0%,#cc0000 100%);
+  box-shadow:0 6px 28px rgba(255,0,0,.38),0 1px 0 rgba(255,255,255,.12) inset;
+}
+.btn-yt:hover{box-shadow:0 12px 40px rgba(255,0,0,.55),0 1px 0 rgba(255,255,255,.15) inset;}
+
+/* TT */
+.btn-tt{
+  background:linear-gradient(135deg,#111 0%,#1c1c1c 100%);
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 6px 28px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.06) inset;
+}
+.btn-tt:hover{box-shadow:0 12px 40px rgba(105,201,208,.28),0 1px 0 rgba(255,255,255,.08) inset;}
+
+/* Mail */
+.btn-mail{
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);
+  border:1px solid rgba(200,160,60,.25);
+  box-shadow:0 6px 28px rgba(0,0,0,.45),0 1px 0 rgba(200,160,60,.08) inset;
+}
+.btn-mail:hover{box-shadow:0 12px 40px rgba(200,160,60,.2),0 1px 0 rgba(200,160,60,.12) inset;}
+
+/* IG */
+.btn-ig{
+  background:linear-gradient(135deg,#f09433 0%,#e6683c 20%,#dc2743 45%,#cc2366 70%,#bc1888 100%);
+  box-shadow:0 6px 28px rgba(220,39,67,.4),0 1px 0 rgba(255,255,255,.1) inset;
+}
+.btn-ig:hover{box-shadow:0 12px 40px rgba(220,39,67,.6),0 1px 0 rgba(255,255,255,.12) inset;}
+
+.inner{display:flex;align-items:center;width:100%;padding:0 18px;gap:0;}
+
+.platform-logo{
+  width:50px;height:58px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+
+.btn-middle{flex:1;text-align:center;padding:18px 0;}
+.btn-title{display:block;font-size:.96rem;font-weight:500;color:#fff;letter-spacing:.02em;}
+.btn-sub{display:block;font-size:.71rem;font-weight:300;color:rgba(255,255,255,.6);margin-top:2px;letter-spacing:.04em;}
+
+.btn-arrow{
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.13);flex-shrink:0;
+  transition:transform .2s,background .2s;
+}
+.platform-btn:hover .btn-arrow{transform:translateX(3px);background:rgba(255,255,255,.22);}
+.btn-arrow svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+
+/* Footer */
+.footer{margin-top:46px;text-align:center;animation:fadeIn 1s ease .8s both;}
+.footer p{font-size:.68rem;color:rgba(240,235,226,0.16);letter-spacing:.14em;text-transform:uppercase;}
+
+@keyframes popIn{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="wrap">
+
+  <div class="logo-ring">
+    <img src="logo.png" alt="Al-Amid"
+      onerror="this.style.display='none'; this.parentNode.insertAdjacentHTML('beforeend','<svg style=\'position:relative;z-index:1\' width=\'58\' height=\'58\' viewBox=\'0 0 200 220\' fill=\'none\'><path d=\'M100 12L188 188Q168 165 100 165Q32 165 12 188Z\' fill=\'rgba(240,235,226,0.93)\'/><path d=\'M100 108L128 155L100 138L72 155Z\' fill=\'#09090b\'/></svg>')">
+  </div>
+
+  <h1 class="name">
+    Al-Amid
+    <span class="arabic">العميد</span>
+  </h1>
+
+  <p class="bio">
+    تابعني واستكشف الطبيعة معي 🏔️<br>
+    الخروج عن المألوف — استكشاف الذات هو الهدف<br>
+    شاهد النمسا بمنظور مختلف 🌲
+  </p>
+
+  <div class="line"></div>
+
+  <div class="platforms">
+
+    <!-- YouTube -->
+    <a class="platform-btn btn-yt" href="https://www.youtube.com/@al_amid_808" target="_blank">
+      <div class="inner">
+        <div class="platform-logo">
+          <svg width="34" height="24" viewBox="0 0 90 63" fill="none">
+            <path d="M88.1 9.8C87.1 6.2 84.2 3.3 80.6 2.3 73.6 0 45 0 45 0S16.4 0 9.4 2.3C5.8 3.3 2.9 6.2 1.9 9.8 0 16.9 0 31.5 0 31.5s0 14.6 1.9 21.7c1 3.6 3.9 6.2 7.5 7.2C16.4 63 45 63 45 63s28.6 0 35.6-2.6c3.6-1 6.5-3.6 7.5-7.2C90 46.1 90 31.5 90 31.5S90 16.9 88.1 9.8z" fill="white"/>
+            <path d="M36 45L59.4 31.5 36 18V45z" fill="#FF0000"/>
+          </svg>
+        </div>
+        <div class="btn-middle">
+          <span class="btn-title">YouTube</span>
+          <span class="btn-sub">Videos &amp; Vlogs</span>
+        </div>
+        <div class="btn-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- TikTok -->
+    <a class="platform-btn btn-tt" href="https://www.tiktok.com/@al_amid_808" target="_blank">
+      <div class="inner">
+        <div class="platform-logo">
+          <svg width="26" height="30" viewBox="0 0 48 56" fill="none">
+            <path d="M34.9 0h-8.5v38.2a8.3 8.3 0 01-8.3 7.8 8.3 8.3 0 01-8.4-8.3 8.3 8.3 0 018.4-8.3c.8 0 1.6.1 2.3.3V21c-.7-.1-1.5-.1-2.3-.1C8.1 20.9 0 29 0 39.1 0 49.1 8.1 56 18.1 56c10 0 18.1-8 18.1-18V19.3c3.2 2.3 7.1 3.6 11.4 3.6V14c-7 0-12.7-6.3-12.7-14z" fill="white"/>
+            <path d="M36.2 0h-8.5v38.2a8.3 8.3 0 01-8.3 7.8 8.3 8.3 0 01-8.4-8.3 8.3 8.3 0 018.4-8.3c.8 0 1.6.1 2.3.3V21c-.7-.1-1.5-.1-2.3-.1" stroke="#69C9D0" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M0 39.1c0 10 8.1 16.9 18.1 16.9" stroke="#FF004F" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="btn-middle">
+          <span class="btn-title">TikTok</span>
+          <span class="btn-sub">Short Content</span>
+        </div>
+        <div class="btn-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- Instagram -->
+    <a class="platform-btn btn-ig" href="https://www.instagram.com/al_amid_808" target="_blank">
+      <div class="inner">
+        <div class="platform-logo">
+          <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+            <rect x="3" y="3" width="42" height="42" rx="12" stroke="white" stroke-width="3.5" fill="none"/>
+            <circle cx="24" cy="24" r="9.5" stroke="white" stroke-width="3.5" fill="none"/>
+            <circle cx="36.5" cy="11.5" r="2.5" fill="white"/>
+          </svg>
+        </div>
+        <div class="btn-middle">
+          <span class="btn-title">Instagram</span>
+          <span class="btn-sub">Photos &amp; Stories</span>
+        </div>
+        <div class="btn-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- Email -->
+    <a class="platform-btn btn-mail" href="mailto:hamza2008.alamid@gmail.com" target="_blank">
+      <div class="inner">
+        <div class="platform-logo">
+          <svg width="28" height="22" viewBox="0 0 48 38" fill="none">
+            <rect x="2" y="2" width="44" height="34" rx="6" stroke="white" stroke-width="3.5" fill="none"/>
+            <polyline points="2,4 24,22 46,4" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="btn-middle">
+          <span class="btn-title">Email</span>
+          <span class="btn-sub">hamza2008.alamid@gmail.com</span>
+        </div>
+        <div class="btn-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <p>اللهم صل وسلم وبارك على سيدنا محمد ♡</p>
+  </div>
+
+</div>
+</body>
+</html>
